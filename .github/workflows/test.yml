@@ -52,11 +52,11 @@ jobs:
       - name: Run integration tests
         working-directory: ./back
         run: |
-          npm run db:prisma migrate reset --force
+          npx prisma migrate reset --force
           npm run test:integration
 
       - name: Run service tests
         working-directory: ./back
         run: |
-          npm run db:prisma migrate reset --force
+          npx prisma migrate reset --force
           npm run test:service
