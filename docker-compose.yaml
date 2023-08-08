@@ -1,0 +1,21 @@
+services:
+  pgsql:
+    image: postgres:15.2
+    container_name: shareit-pgsql
+    restart: always
+    environment:
+      POSTGRES_USER: shareit
+      POSTGRES_PASSWORD: shareit
+    volumes:
+      - 'pgsql:/var/lib/postgresql/data'
+    ports:
+      - '5436:5432'
+    networks:
+      - service
+
+networks:
+  service:
+    name: shareit-service
+
+volumes:
+  pgsql:
