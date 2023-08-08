@@ -16,7 +16,6 @@ type ReadDependencies = {
   agnosticReads: AgnosticReads;
 };
 
-
 type WriteDependencies = {
   fastify: FastifyInstance;
   uuidGenerator: UuidGenerator;
