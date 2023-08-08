@@ -10,6 +10,29 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model dummy_model {
-  id          String     @id @db.Uuid
+model user {
+  id                String @id @db.Uuid
+  name              String
+  email             String
+  item              item[]
+  loans_as_owner    loan[] @relation(name: "OwnerOfLoan")
+  loans_as_borrower loan[] @relation(name: "BorrowerOfLoan")
+}
+
+model item {
+  id       String @id @db.Uuid
+  name     String
+  owner    user   @relation(fields: [owner_id], references: [id])
+  owner_id String @db.Uuid
+}
+
+model loan {
+  id                String   @id @db.Uuid
+  lender            user     @relation(name: "OwnerOfLoan", fields: [lender_id], references: [id])
+  lender_id         String   @db.Uuid
+  borrower          user     @relation(name: "BorrowerOfLoan", fields: [borrower_id], references: [id])
+  borrower_id       String   @db.Uuid
+  start_date        DateTime
+  expected_end_date DateTime
+  returned          Boolean  @default(false)
 }
