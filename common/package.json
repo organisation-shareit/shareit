@@ -1,0 +1,26 @@
+{
+  "name": "shareit-api-client",
+  "version": "0.0.11",
+  "description": "The client for the 8-stacks API",
+  "license": "UNLICENSED",
+  "author": "AnaelChardan",
+  "main": "./build/index.js",
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "NODE_OPTIONS=\"--max_old_space_size=6544\" ./node_modules/.bin/tsup --dts-resolve",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "@ts-rest/core": "3.26.3"
+  },
+  "devDependencies": {
+    "tsup": "7.1.0"
+  },
+  "peerDependencies": {
+    "typescript": "5.1.3",
+    "ts-brand": "^0.0.2",
+    "zod": "3.21.4"
+  }
+}
