@@ -22,7 +22,7 @@
     "format:check": "prettier --check .",
     "start:in_memory": "NODE_ENV=IN_MEMORY node ./dist/index.js",
     "start:production": "NODE_ENV=PRODUCTION node ./dist/index.js",
-    "start": "yarn start:production",
+    "start": "npm run start:production",
     "start:docker": "docker compose -f docker-compose.yaml up -d",
     "publish-client": "npm run build && cd ./client && npm install --ignore-scripts && npm run build && npm publish",
     "test:unit": "NODE_ENV=test TZ=UTC && jest --config jest.config.js --selectProjects unit --passWithNoTests",
@@ -33,7 +33,6 @@
     "db:migration:migrate": "npx prisma migrate dev --name",
     "db:schema:push": "npx prisma db push",
     "db:prisma": "npx prisma",
-    
     "refresh-all": "npm run  && npm run clean && npm run local:setup && npm run prepare && npm run build && npm run start:docker && sleep 10 && npm run db:prisma migrate reset && npm run start"
   },
   "prisma": {
@@ -69,7 +68,6 @@
     "@types/node": "^18.15.11",
     "@types/signale": "^1.4.4",
     "@types/uuid": "9.0.1",
-    "@types/yarnpkg__lockfile": "^1.1.5",
     "@typescript-eslint/eslint-plugin": "5.58.0",
     "@typescript-eslint/parser": "5.58.0",
     "eslint": "8.38.0",
