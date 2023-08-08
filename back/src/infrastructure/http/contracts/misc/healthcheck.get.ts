@@ -2,6 +2,9 @@ import { z } from 'zod';
 import { HTTP_2xx_OK, HTTP_4xx_BAD_REQUEST } from '../http-codes';
 import { invalidCommandSchema } from '../others/command';
 
+export const HEALTHCHEK_METHOD = 'GET';
+export const HEALTHCHEK_ROUTE = '/healthcheck.get';
+
 export const healthcheckRequestSchema = z.object({});
 export type HealthcheckRequest = z.infer<typeof healthcheckRequestSchema>;
 

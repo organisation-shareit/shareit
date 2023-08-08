@@ -1,5 +1,5 @@
 import { initContract } from '@ts-rest/core';
-import { HEALTHCHEK_METHOD, HEALTHCHEK_ROUTE } from '../misc/healthcheck.get';
+import { HEALTHCHEK_METHOD, HEALTHCHEK_ROUTE } from './misc/healthcheck.get';
 import { healthcheckResponseSchema } from './misc/healthcheck.get';
 
 const tsRest = initContract();
@@ -12,3 +12,4 @@ export const tsRestContract = tsRest.router({
     summary: 'Healthcheck of the API',
   },
 });
+

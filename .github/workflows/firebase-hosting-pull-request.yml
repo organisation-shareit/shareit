@@ -10,9 +10,12 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
+      # - name: Install back for shared contracts
+      #   run: npm ci && npm run build
+      #   working-directory: ./back
       - name: Install dependencies and build
-        run: npm ci && npm run build
-        working-directory: ./front
+        run: cd back && npm ci && cd ../front && npm ci && npm run build
+        # working-directory: 
         env:
           VITE_ENV_NAME: integration
           VITE_API_URL: ${{ vars.API_URL }}

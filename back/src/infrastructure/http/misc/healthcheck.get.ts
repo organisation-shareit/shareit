@@ -9,9 +9,6 @@ import {
 } from '../contracts/misc/healthcheck.get';
 import { HTTP_2xx_OK } from '../contracts/http-codes';
 
-export const HEALTHCHEK_METHOD = 'GET';
-export const HEALTHCHEK_ROUTE = '/healthcheck.get';
-
 export const HEALTHCHECK_MODULE = 'healthcheck';
 
 type Dependencies = {
