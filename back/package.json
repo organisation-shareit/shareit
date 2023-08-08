@@ -33,6 +33,7 @@
     "db:migration:migrate": "npx prisma migrate dev --name",
     "db:schema:push": "npx prisma db push",
     "db:prisma": "npx prisma",
+    
     "refresh-all": "npm run  && npm run clean && npm run local:setup && npm run prepare && npm run build && npm run start:docker && sleep 10 && npm run db:prisma migrate reset && npm run start"
   },
   "prisma": {
