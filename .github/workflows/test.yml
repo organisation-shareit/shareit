@@ -30,9 +30,16 @@ jobs:
         working-directory: ./back
         run: npm run format:check
 
+      - name: Copy .env
+        working-directory: ./back
+        run: |
+          npm run local:setup
+
       - name: Check Typing
         working-directory: ./back
-        run: npm run check-types
+        run: |
+          npx prisma migrate reset --force
+          npm run check-types
 
       - name: Check Build
         working-directory: ./back
@@ -41,11 +48,6 @@ jobs:
       - name: Run unit tests
         working-directory: ./back
         run: npm run test:unit
-
-      - name: Copy .env
-        working-directory: ./back
-        run: |
-          npm run local:setup
 
       - name: Run integration tests
         working-directory: ./back
