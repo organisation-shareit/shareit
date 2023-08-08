@@ -3,7 +3,7 @@ name: Test
 on: [push]
 
 jobs:
-  test:
+  test-back:
     name: format and test back
     runs-on: ubuntu-latest
     steps:

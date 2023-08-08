@@ -30,9 +30,9 @@ export function buildHealthcheckRoute(dependencies: Dependencies): HealthcheckHa
   const { logger } = dependencies;
 
   return async function healthcheckRoute(
-      /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
     _payload: HealthcheckRequest,
-      /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
     _metadata: HealthcheckMetadata,
   ): HealthcheckResponse {
     logger.info(HEALTHCHECK_MODULE, 'HEALTHCHECK', {});
