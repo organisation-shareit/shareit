@@ -1,4 +1,5 @@
 import initFastify, { FastifyInstance } from 'fastify';
+import cors from '@fastify/cors'
 import fastifySwaggerUi from '@fastify/swagger-ui';
 import { CommandBus } from '@application/commandBus';
 import { QueryBus } from '@application/queryBus';
