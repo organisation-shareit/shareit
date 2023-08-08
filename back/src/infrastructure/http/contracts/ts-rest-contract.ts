@@ -9,5 +9,6 @@ export const tsRestContract = tsRest.router({
     method: HEALTHCHEK_METHOD,
     path: HEALTHCHEK_ROUTE,
     responses: healthcheckResponseSchema,
+    summary: 'Healthcheck of the API',
   },
 });
