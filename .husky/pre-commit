@@ -3,3 +3,8 @@
 
 cd back
 npm run lint-back
+
+cd ..
+
+cd front
+npm run lint-front
