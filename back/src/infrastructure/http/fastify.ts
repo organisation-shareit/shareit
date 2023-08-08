@@ -1,6 +1,5 @@
 import initFastify, { FastifyInstance } from 'fastify';
 import fastifySwaggerUi from '@fastify/swagger-ui';
-import { serializerCompiler, validatorCompiler } from 'fastify-type-provider-zod';
 import { CommandBus } from '@application/commandBus';
 import { QueryBus } from '@application/queryBus';
 import { Logger } from '@utils/logger';
@@ -17,9 +16,6 @@ type ReadDependencies = {
   agnosticReads: AgnosticReads;
 };
 
-function loadFastifyReads(dependencies: ReadDependencies): void {
-  dependencies.logger.info('FASTIFY', 'LOADING READS', {});
-}
 
 type WriteDependencies = {
   fastify: FastifyInstance;
@@ -28,10 +24,6 @@ type WriteDependencies = {
   logger: Logger;
   agnosticWrites: AgnosticWrites;
 };
-
-function loadFastifyWrites(dependencies: WriteDependencies): void {
-  dependencies.logger.info('FASTIFY', 'LOADING WRITES', {});
-}
 
 type Dependencies = Omit<ReadDependencies & WriteDependencies, 'fastify'>;
 
@@ -49,22 +41,22 @@ export function buildFastifyServer(dependencies: Dependencies): FastifyInstance 
     fastify,
   });
 
-  fastify.setValidatorCompiler(validatorCompiler);
-  fastify.setSerializerCompiler(serializerCompiler);
-
-  fastify.register(fastifySwagger, {
-    swagger: openapi,
-  });
-
-  fastify.register(fastifySwaggerUi, {
-    routePrefix: '/documentation',
-  });
-
-  fastify.after(() => {
-    fastify.register(tsRestServer.plugin(tsRestRouter));
-    loadFastifyReads({ ...dependencies, fastify });
-    loadFastifyWrites({ ...dependencies, fastify });
-  });
+  fastify
+    .register(cors, {
+      origin: ['https://share-it-5c6eb.web.app', 'http://localhost:5173'],
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
+      exposedHeaders: ['Content-Length', 'ETag'],
+      credentials: true,
+      preflightContinue: false,
+    })
+    .register(fastifySwagger, {
+      swagger: openapi,
+    })
+    .register(fastifySwaggerUi, {
+      routePrefix: '/documentation',
+    })
+    .register(tsRestServer.plugin(tsRestRouter));
 
   return fastify;
 }

@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "^8.0.2",
+    "@fastify/cors": "^8.3.0",
     "@fastify/swagger": "^8.8.0",
     "@fastify/swagger-ui": "^1.9.2",
     "@prisma/client": "4.13.0",
@@ -48,7 +49,6 @@
     "@ts-rest/open-api": "^3.26.4",
     "config": "^3.3.9",
     "fastify": "^4.15.0",
-    "fastify-type-provider-zod": "^1.1.9",
     "neverthrow": "^6.0.0",
     "prisma": "^4.13.0",
     "signale": "^1.4.0",
