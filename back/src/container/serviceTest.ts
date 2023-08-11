@@ -34,10 +34,10 @@ function buildDatabaseAdapters(dependencies: {
   };
 }
 
-export function loadProductionContainer(): Container {
+export function loadServiceTestContainer(): Container {
   const logger = buildSignaleLogger();
 
-  logger.info('container', 'Loading production container', {});
+  logger.info('container', 'Loading SERVICE_TEST container', {});
 
   const adapters = buildDatabaseAdapters({ logger });
 

@@ -1,6 +1,6 @@
 import { loadInMemoryContainer } from './inMemory';
 import { loadProductionContainer } from './production';
-import { loadServiceTestContainer } from './service';
+import { loadServiceTestContainer } from './serviceTest';
 import { Container } from './types';
 
 export function getContainer(): Container {

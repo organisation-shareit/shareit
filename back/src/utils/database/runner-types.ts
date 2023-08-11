@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { Result } from 'neverthrow';
-import { type Sql } from 'sql-template-tag';
+import { type Sql } from './sql-template-tag';
 
 export const genericTransactionSchema = z
   .object({

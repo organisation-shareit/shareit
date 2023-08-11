@@ -34,6 +34,80 @@ export function buildTsRestApp(dependencies: Dependencies) {
           throw new TypeGuardError(result, 'Invalid status');
       }
     },
+    createUser: async (params) => {
+      const result = await dependencies.agnosticWrites.createUser(params.body, {});
+
+      switch (result.status) {
+        case 400:
+          return {
+            status: 400,
+            body: result.body,
+          };
+        case 500: {
+          return {
+            status: 500,
+            body: result.body,
+          };
+        }
+        case 201:
+          return {
+            status: 201,
+            body: result.body,
+          };
+        default:
+          throw new TypeGuardError(result, 'Invalid status');
+      }
+    },
+    updateUser: async (params) => {
+      const result = await dependencies.agnosticWrites.updateUser(params.body, {});
+
+      switch (result.status) {
+        case 400:
+          return {
+            status: 400,
+            body: result.body,
+          };
+        case 500: {
+          return {
+            status: 500,
+            body: result.body,
+          };
+        }
+        case 200:
+          return {
+            status: 200,
+            body: result.body,
+          };
+        default:
+          throw new TypeGuardError(result, 'Invalid status');
+      }
+    },
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+    listAllUsers: async (params) => {
+      const result = await dependencies.agnosticReads.listAllUsers({}, {});
+
+      switch (result.status) {
+        case 200:
+          return {
+            status: 200,
+            body: result.body,
+          };
+        case 400: {
+          return {
+            status: 400,
+            body: result.body,
+          };
+        }
+        case 500: {
+          return {
+            status: 500,
+            body: result.body,
+          };
+        }
+        default:
+          throw new TypeGuardError(result, 'Invalid status');
+      }
+    },
   });
 
   const openApiTsRest = generateOpenApi(

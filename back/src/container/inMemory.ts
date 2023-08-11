@@ -1,24 +1,12 @@
-import { buildQueryBus } from '@application/queryBus';
-import { buildCommandBus } from '@application/commandBus';
 import { buildSignaleLogger } from '@utils/logger/signale';
 import { uuidGenerator } from '@utils/uuid';
-import { Container } from './types';
+import { Adapters, Container } from './types';
+import { buildUseCases } from './useCases';
 
 export function loadInMemoryContainer(): Container {
-  // UTILS //
-
   const logger = buildSignaleLogger();
-  // const inMemoryDatabase = getInMemoryDatabase();
-
-  const commandBus = buildCommandBus({
-    logger,
-  });
-
-  const queryBus = buildQueryBus({
-    logger,
-  });
-
-  // END COMPANY //
+  const adapters = {} as Adapters;
+  const { commandBus, queryBus } = buildUseCases(adapters, logger);
 
   return {
     logger,

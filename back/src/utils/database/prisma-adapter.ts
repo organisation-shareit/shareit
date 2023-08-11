@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { type Sql } from 'sql-template-tag';
 import { Oops } from '@utils/oops';
 import { Result, err, ok } from 'neverthrow';
+import { type Sql } from './sql-template-tag';
 import {
   type SqlRunner,
   type TransactionnalResult,
