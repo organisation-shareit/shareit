@@ -1,12 +1,12 @@
-import { userEmailSchema } from '@domain/user/aggregate/email';
-import { userNameSchema } from '@domain/user/aggregate/name';
+import { userEmailSchema } from '../../../../../../domain/user/aggregate/email';
+import { userNameSchema } from '../../../../../../domain/user/aggregate/name';
 import {
   HTTP_2xx_CREATED,
   HTTP_4xx_BAD_REQUEST,
   HTTP_5xx_INTERNAL_SERVER_ERROR,
-} from '@infrastructure/http/contracts/http-codes';
-import { Handler, unknownErrorForCommandSchema } from '@utils/agnostic-server';
-import { invalidCommandSchema } from '@utils/http/errors';
+} from '../../../http-codes';
+import { Handler, unknownErrorForCommandSchema } from '../../../../../../utils/agnostic-server';
+import { invalidCommandSchema } from '../../../errors';
 import { z } from 'zod';
 
 export const CREATE_USER_METHOD = 'POST';
