@@ -14,3 +14,17 @@ export type Handler<
   Metadata extends z.ZodType,
   Responses extends ResponseSchema,
 > = (payload: z.infer<Payload>, metadata: z.infer<Metadata>) => Promise<HandlerResult<Responses>>;
+
+export const unknownErrorForCommandSchema = z.object({
+  commandKind: z.string(),
+  commandPayload: z.object({}).passthrough(),
+  kind: z.literal('unknownError'),
+  errors: z.unknown(),
+});
+
+export const unknownErrorForQuerySchema = z.object({
+  queryKind: z.string(),
+  queryPayload: z.object({}).passthrough(),
+  kind: z.literal('unknownError'),
+  errors: z.unknown(),
+});

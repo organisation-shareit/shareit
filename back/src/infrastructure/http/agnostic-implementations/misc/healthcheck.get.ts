@@ -1,13 +1,13 @@
 import { Logger } from '@utils/logger';
 import { Handler } from '@utils/agnostic-server';
 import {
-  HealthcheckMetadata,
-  HealthcheckRequest,
   healthcheckRequestSchema,
-  healthcheckResponseSchema,
   heatlhcheckMetadataSchema,
-} from '../contracts/misc/healthcheck.get';
-import { HTTP_2xx_OK } from '../contracts/http-codes';
+  healthcheckResponseSchema,
+  HealthcheckRequest,
+  HealthcheckMetadata,
+} from '@infrastructure/http/contracts/misc/healthcheck.get';
+import { HTTP_2xx_OK } from '../../contracts/http-codes';
 
 export const HEALTHCHECK_MODULE = 'healthcheck';
 

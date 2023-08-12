@@ -1,5 +1,7 @@
 import { type CommandBus } from '@application/commandBus';
 import { type QueryBus } from '@application/queryBus';
+import { ListAllUsers } from '@domain/user/query/listAllUsers';
+import { UserRepository } from '@domain/user/repository';
 import { type Logger } from '@utils/logger';
 import { type UuidGenerator } from '@utils/uuid';
 
@@ -9,4 +11,15 @@ export type Container = {
   commandBus: CommandBus;
   uuidGenerator: UuidGenerator;
   disconnect: () => Promise<void>;
+};
+
+export type Adapters = {
+  database: {
+    query: {
+      listAllUsers: ListAllUsers;
+    };
+    repository: {
+      userRepository: UserRepository;
+    };
+  };
 };
