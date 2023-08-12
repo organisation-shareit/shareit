@@ -5,9 +5,6 @@ import { invalidQuerySchema } from '../others/command';
 export const HEALTHCHEK_METHOD = 'GET';
 export const HEALTHCHEK_ROUTE = '/healthcheck.get';
 
-export const HEALTHCHEK_METHOD = 'GET';
-export const HEALTHCHEK_ROUTE = '/healthcheck.get';
-
 export const healthcheckRequestSchema = z.object({});
 export type HealthcheckRequest = z.infer<typeof healthcheckRequestSchema>;
 
