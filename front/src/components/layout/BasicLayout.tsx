@@ -1,19 +1,20 @@
-import { Outlet } from "react-router";
-import { Box, Button, Container, Stack, Text } from "@chakra-ui/react";
+import { Outlet } from 'react-router';
+import { Box, Button, Container, Stack, Text } from '@chakra-ui/react';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export const BasicLayout = () => {
   return (
     <>
-      <Box minH="100vh" bg={"white"}>
+      <Box id="basic-layout" minH="100vh" bg={'white'} minW={'100vh'}>
         <Container
           id="main-container"
-          padding={{ base: "5", md: "8", lg: "24" }}
+          width={'100%'}
+          // padding={{ base: "5", md: "8", lg: "24" }}
         >
           {/* Box that create margin between button */}
           <Text>Basic Layout</Text>
-          <Stack spacing={4} direction="row" mb={"8em"}>
+          <Stack spacing={4} direction="row" mb={'8em'}>
             <Link to="/app/page-one">
               <Button colorScheme="blue">Page One</Button>
             </Link>

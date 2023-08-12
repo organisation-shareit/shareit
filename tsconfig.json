@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        // Other options...
+        // Make sure paths are configured correctly
+        "baseUrl": "./",
+        "paths": {
+            "@shared/*": [
+                "back/src/http/contracts/*"
+            ]
+        }
+    },
+    "references": [
+        // Reference to the "back" package
+        {
+            "path": "./back"
+        },
+        // Reference to the "front" package
+        {
+            "path": "./front"
+        }
+    ]
+}
