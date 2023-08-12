@@ -5,6 +5,7 @@ import { buildPostgresqlUserRepository } from '@infrastructure/database/user/wri
 import { buildPrismaSqlRunner } from '@utils/database/prisma-adapter';
 import { Logger } from '@utils/logger';
 import { buildPostgresqlListAllUsers } from '@infrastructure/database/user/read/posgresql/postgresqlListAllUsers';
+import { buildPostgresqlItemRepository } from '@infrastructure/database/item/write/repository/postgresql/postgresqlItemRepository';
 import { Adapters, Container } from './types';
 import { buildUseCases } from './useCases';
 
@@ -19,6 +20,10 @@ function buildDatabaseAdapters(dependencies: {
     prismaClient,
   });
 
+  const itemRepository = buildPostgresqlItemRepository({
+    prismaClient,
+  });
+
   const listAllUsers = buildPostgresqlListAllUsers({ sqlRunner });
 
   return {
@@ -28,6 +33,7 @@ function buildDatabaseAdapters(dependencies: {
       },
       repository: {
         userRepository,
+        itemRepository,
       },
     },
     prismaClient,
