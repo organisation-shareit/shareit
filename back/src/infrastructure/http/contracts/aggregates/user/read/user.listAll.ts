@@ -1,3 +1,4 @@
+import { z } from 'zod';
 import { listAllUsersRowSchema } from '../../../../../../domain/user/query/listAllUsers';
 import {
   HTTP_2xx_OK,
@@ -6,7 +7,6 @@ import {
 } from '../../../http-codes';
 import { Handler, unknownErrorForQuerySchema } from '../../../../../../utils/agnostic-server';
 import { invalidQuerySchema } from '../../../errors';
-import { z } from 'zod';
 
 export const LIST_ALL_USERS_METHOD = 'GET';
 export const LIST_ALL_USERS_ROUTE = '/user.listAll';

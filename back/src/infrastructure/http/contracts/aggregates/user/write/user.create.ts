@@ -1,3 +1,4 @@
+import { z } from 'zod';
 import { userEmailSchema } from '../../../../../../domain/user/aggregate/email';
 import { userNameSchema } from '../../../../../../domain/user/aggregate/name';
 import {
@@ -7,7 +8,6 @@ import {
 } from '../../../http-codes';
 import { Handler, unknownErrorForCommandSchema } from '../../../../../../utils/agnostic-server';
 import { invalidCommandSchema } from '../../../errors';
-import { z } from 'zod';
 
 export const CREATE_USER_METHOD = 'POST';
 export const CREATE_USER_ROUTE = '/user.create';

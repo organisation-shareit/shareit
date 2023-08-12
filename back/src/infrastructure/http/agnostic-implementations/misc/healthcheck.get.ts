@@ -1,6 +1,5 @@
 import { Logger } from '@utils/logger';
 import { Handler } from '@utils/agnostic-server';
-import { HTTP_2xx_OK } from '../../contracts/http-codes';
 import {
   healthcheckRequestSchema,
   heatlhcheckMetadataSchema,
@@ -8,6 +7,7 @@ import {
   HealthcheckRequest,
   HealthcheckMetadata,
 } from '@infrastructure/http/contracts/misc/healthcheck.get';
+import { HTTP_2xx_OK } from '../../contracts/http-codes';
 
 export const HEALTHCHECK_MODULE = 'healthcheck';
 

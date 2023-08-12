@@ -1,3 +1,4 @@
+import { z } from 'zod';
 import { userEmailSchema } from '../../../../../../domain/user/aggregate/email';
 import { userIdSchema } from '../../../../../../domain/user/aggregate/id';
 import { userNameSchema } from '../../../../../../domain/user/aggregate/name';
@@ -8,7 +9,6 @@ import {
 } from '../../../http-codes';
 import { Handler, unknownErrorForCommandSchema } from '../../../../../../utils/agnostic-server';
 import { invalidCommandSchema } from '../../../errors';
-import { z } from 'zod';
 
 export const UPDATE_USER_METHOD = 'PUT';
 export const UPDATE_USER_ROUTE = '/user.update';
