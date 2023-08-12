@@ -8,13 +8,10 @@ name: Deploy to Firebase Hosting on merge
       - main
 jobs:
   build_and_deploy:
-    defaults:
-      run:
-        working-directory: ./front
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci && npm run build
+      - run: cd back && npm ci && cd ../front && npm ci && npm run build
         env:
           VITE_ENV_NAME: production
           VITE_API_URL: ${{ vars.API_URL }}
