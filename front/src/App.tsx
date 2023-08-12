@@ -11,7 +11,7 @@ import {
 import customTheme from './theme';
 import React from 'react';
 import { AuthenticationPage } from './pages/AuthenticationPage/AuthenticationPage';
-import { BasicLayout } from './components/layout/BasicLayout';
+import { MobileLayout } from './components/layout/MobileLayout';
 import { WorkInProgressPage } from './pages/WorkInProgressPage/WorkInProgressPage';
 import { DebugPage } from './pages/DebugPage/DebugPage';
 import { WebLayout } from './components/layout/WebLayout';
@@ -27,7 +27,7 @@ function App() {
       <React.Fragment>
         <Route path="/" element={<Navigate to={'app'} replace />} />
         <Route path="/signin" element={<AuthenticationPage />} />
-        <Route path="/app/*" element={isMobile ? <BasicLayout /> : <WebLayout />}>
+        <Route path="/app/*" element={isMobile ? <MobileLayout /> : <WebLayout />}>
           <Route path="*" element={<Navigate to={'page-one'} />} />
           <Route path="items" element={<ItemsPage />} />
           <Route path="loans" element={<LoansPage />} />
