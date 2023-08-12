@@ -21,6 +21,18 @@ import {
   LIST_ALL_USERS_ROUTE,
   listAllUsersResponseSchema,
 } from './aggregates/user/read/user.listAll';
+import {
+  CREATE_ITEM_METHOD,
+  CREATE_ITEM_ROUTE,
+  createItemRequestSchema,
+  createItemResponseSchema,
+} from './aggregates/item/write/item.create';
+import {
+  UPDATE_ITEM_METHOD,
+  UPDATE_ITEM_ROUTE,
+  updateItemRequestSchema,
+  updateItemResponseSchema,
+} from './aggregates/item/write/item.update';
 
 const tsRest = initContract();
 
@@ -50,5 +62,19 @@ export const tsRestContract = tsRest.router({
     path: LIST_ALL_USERS_ROUTE,
     responses: listAllUsersResponseSchema,
     summary: 'Listing all users',
+  },
+  createItem: {
+    method: CREATE_ITEM_METHOD,
+    path: CREATE_ITEM_ROUTE,
+    body: createItemRequestSchema,
+    responses: createItemResponseSchema,
+    summary: 'Creating a new item',
+  },
+  updateItem: {
+    method: UPDATE_ITEM_METHOD,
+    path: UPDATE_ITEM_ROUTE,
+    body: updateItemRequestSchema,
+    responses: updateItemResponseSchema,
+    summary: 'Updating an existing item',
   },
 });
