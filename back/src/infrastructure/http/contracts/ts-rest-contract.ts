@@ -52,4 +52,3 @@ export const tsRestContract = tsRest.router({
     summary: 'Listing all users',
   },
 });
-
