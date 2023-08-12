@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import './App.css';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, useMediaQuery } from '@chakra-ui/react';
 import {
   Navigate,
   Route,
@@ -12,24 +12,27 @@ import customTheme from './theme';
 import React from 'react';
 import { AuthenticationPage } from './pages/AuthenticationPage/AuthenticationPage';
 import { BasicLayout } from './components/layout/BasicLayout';
-import { PageOneExample } from './pages/PageOneExample/PageOneExample';
-import { PageTwoExample } from './pages/PageTwoExample/PageTwoExample';
 import { WorkInProgressPage } from './pages/WorkInProgressPage/WorkInProgressPage';
 import { DebugPage } from './pages/DebugPage/DebugPage';
+import { WebLayout } from './components/layout/WebLayout';
+import { ItemsPage } from './pages/ItemsPage/ItemsPage';
+import { LoansPage } from './pages/LoansPage/LoansPage';
+import { GroupsPage } from './pages/GroupsPage/GroupsPage';
 
 function App() {
   const queryClient = new QueryClient();
-
+  const [isMobile] = useMediaQuery('(max-width: 768px)');
   const router = createBrowserRouter(
     createRoutesFromElements(
       <React.Fragment>
         <Route path="/" element={<Navigate to={'app'} replace />} />
         <Route path="/signin" element={<AuthenticationPage />} />
-        <Route path="/app/*" element={<BasicLayout />}>
+        <Route path="/app/*" element={isMobile ? <BasicLayout /> : <WebLayout />}>
           <Route path="*" element={<Navigate to={'page-one'} />} />
-          <Route path="page-one" element={<PageOneExample />} />
-          <Route path="page-two" element={<PageTwoExample />} />
-          <Route path="random-page" element={<WorkInProgressPage title="Random page" />} />
+          <Route path="items" element={<ItemsPage />} />
+          <Route path="loans" element={<LoansPage />} />
+          <Route path="groups" element={<GroupsPage />} />
+          <Route path="settings" element={<WorkInProgressPage title="Settings" />} />
           <Route path="debug" element={<DebugPage />} />
         </Route>
       </React.Fragment>,
