@@ -1,7 +1,5 @@
 import { User } from '@domain/user/aggregate';
-import { createUserEmail } from '@domain/user/aggregate/email';
-import { UserId, createUserId } from '@domain/user/aggregate/id';
-import { createUserName } from '@domain/user/aggregate/name';
+import { UserId } from '@domain/user/aggregate/id';
 import { UserRepository } from '@domain/user/repository';
 import { PrismaClient } from '@prisma/client';
 import { TypeGuardError } from '@utils/typeguard-error';
@@ -68,9 +66,9 @@ export function buildPostgresqlUserRepository(dependencies: Dependencies): UserR
     }
 
     return ok({
-      id: createUserId(user.id),
-      email: createUserEmail(user.email),
-      name: createUserName(user.name),
+      id: user.id,
+      email: user.email,
+      name: user.name,
     });
   }
 

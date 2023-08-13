@@ -3,7 +3,6 @@ import {
   LEND_ITEM_COMMAND_KIND,
   lendItemCommandSchema,
 } from '@application/item/write/lendItem/lendItemCommand';
-import { createLoanId } from '@domain/loan/aggregate/id';
 import {
   LendItemMetadata,
   LendItemRequest,
@@ -36,7 +35,7 @@ export function buildLendItemRoute(dependencies: Dependencies) {
     logger.info(LEND_ITEM_MODULE, 'CREATE_ITEM_ROUTE', { payload, _metadata });
     const commandId = uuidGenerator.generate(`command-${LEND_ITEM_MODULE}`);
 
-    const loanId = createLoanId(uuidGenerator.generate(LEND_ITEM_MODULE));
+    const loanId = uuidGenerator.generate(LEND_ITEM_MODULE);
 
     const commandPayload = {
       id: loanId,

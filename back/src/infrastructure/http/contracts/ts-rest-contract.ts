@@ -39,8 +39,15 @@ import {
   lendItemRequestSchema,
   lendItemResponseSchema,
 } from './aggregates/item/write/item.lend';
+import { Item, itemSchema } from '../../../domain/item/aggregate';
+import { User, userSchema } from '../../../domain/user/aggregate';
+import { Loan, loanSchema } from '../../../domain/loan/aggregate';
 
 const tsRest = initContract();
+
+export { type Item, itemSchema };
+export { type User, userSchema };
+export { type Loan, loanSchema };
 
 export const tsRestContract = tsRest.router({
   healthcheck: {
