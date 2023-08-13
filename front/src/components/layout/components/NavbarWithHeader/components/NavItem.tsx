@@ -18,7 +18,7 @@ export const NavItem = ({ icon, linkPath, children, ...rest }: NavItemProps) => 
             p="4"
             mx="4"
             borderRadius="lg"
-            background={isActive ? 'purple.400' : ''}
+            background={isActive ? 'purple.600' : ''}
             role="group"
             cursor="pointer"
             _hover={{

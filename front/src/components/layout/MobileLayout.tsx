@@ -13,9 +13,17 @@ export const MobileLayout = () => {
         </Box>
       </Flex>
 
-      <Flex as="footer" h="60px" bg="gray.200" shadow={"dark-lg"}>
+      <Box
+        as="footer"
+        h="60px"
+        bg="gray.200"
+        shadow={'dark-lg'}
+        position="fixed"
+        bottom="0"
+        width="100%"
+      >
         <BottomNavigationBar linkItems={[routes.items, routes.loans, routes.groups]} />
-      </Flex>
+      </Box>
     </Flex>
   );
 };
