@@ -1,13 +1,13 @@
 import { z } from 'zod';
-import { userIdSchema } from '@domain/user/aggregate/id';
-import { itemIdSchema } from '@domain/item/aggregate/id';
+import { userIdSchema } from '../../user/aggregate/id';
+import { itemIdSchema } from '../../item/aggregate/id';
 import { loanIdSchema } from './id';
 import { loanEventsSchema } from '../events';
 import { loanStatusSchema } from './status';
 import { loanStartDateSchema } from './startDate';
 import { loanExpectedEndDateSchema } from './expectedEndDate';
 
-export const loan = z.object({
+export const loanSchema = z.object({
   id: loanIdSchema,
   itemId: itemIdSchema,
   sharedBy: userIdSchema,
@@ -18,5 +18,5 @@ export const loan = z.object({
   expectedEndDate: loanExpectedEndDateSchema,
 });
 
-export type Loan = z.infer<typeof loan>;
+export type Loan = z.infer<typeof loanSchema>;
 export type LoanWithoutEvent = Omit<Loan, 'lastEvent'>;

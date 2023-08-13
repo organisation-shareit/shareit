@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { userIdSchema } from '@domain/user/aggregate/id';
+import { userIdSchema } from '../../user/aggregate/id';
 import { itemIdSchema } from './id';
 import { itemNameSchema } from './name';
 import { userEventsSchema } from '../events';
