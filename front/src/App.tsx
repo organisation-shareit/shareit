@@ -18,16 +18,29 @@ import { WebLayout } from './components/layout/WebLayout';
 import { ItemsPage } from './pages/ItemsPage/ItemsPage';
 import { LoansPage } from './pages/LoansPage/LoansPage';
 import { GroupsPage } from './pages/GroupsPage/GroupsPage';
+import { RequireAuth, RequireNoAuth } from './routes/components';
+import { AuthProvider } from './context/authProvider';
 
 function App() {
   const queryClient = new QueryClient();
+
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   const router = createBrowserRouter(
     createRoutesFromElements(
       <React.Fragment>
-        <Route path="/" element={<Navigate to={'app'} replace />} />
-        <Route path="/signin" element={<AuthenticationPage />} />
-        <Route path="/app/*" element={isMobile ? <MobileLayout /> : <WebLayout />}>
+        <Route path="/*" element={<Navigate to={'signin'} replace />} />
+        <Route
+          path="/signin"
+          element={
+            <RequireNoAuth>
+              <AuthenticationPage />
+            </RequireNoAuth>
+          }
+        />
+        <Route
+          path="/app/*"
+          element={<RequireAuth>{isMobile ? <MobileLayout /> : <WebLayout />}</RequireAuth>}
+        >
           <Route path="*" element={<Navigate to={'page-one'} />} />
           <Route path="items" element={<ItemsPage />} />
           <Route path="loans" element={<LoansPage />} />
@@ -41,11 +54,11 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* <AuthProvider> */}
-      <ChakraProvider theme={customTheme}>
-        <RouterProvider router={router} />
-      </ChakraProvider>
-      {/* </AuthProvider> */}
+      <AuthProvider>
+        <ChakraProvider theme={customTheme}>
+          <RouterProvider router={router} />
+        </ChakraProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
