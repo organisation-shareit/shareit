@@ -3,7 +3,6 @@ import {
   SAVE_ITEM_COMMAND_KIND,
   saveItemCommandSchema,
 } from '@application/item/write/saveItem/saveItemCommand';
-import { createItemId } from '@domain/item/aggregate/id';
 import {
   CreateItemMetadata,
   CreateItemRequest,
@@ -37,7 +36,7 @@ export function buildCreateItemRoute(dependencies: Dependencies): CreateItemRout
     logger.info(CREATE_ITEM_MODULE, 'CREATE_ITEM_ROUTE', { payload, _metadata });
     const commandId = uuidGenerator.generate(`command-${CREATE_ITEM_MODULE}`);
 
-    const itemId = createItemId(uuidGenerator.generate(CREATE_ITEM_MODULE));
+    const itemId = uuidGenerator.generate(CREATE_ITEM_MODULE);
 
     const commandPayload = {
       id: itemId,

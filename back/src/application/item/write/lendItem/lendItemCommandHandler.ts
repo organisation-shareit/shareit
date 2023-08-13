@@ -7,8 +7,6 @@ import { LoanRepository } from '@domain/loan/repository';
 import { LoanId } from '@domain/loan/aggregate/id';
 import { CannotSaveLoanError } from '@domain/loan/repository/errors';
 import { DateUtils } from '@utils/date';
-import { createLoanStartDate } from '@domain/loan/aggregate/startDate';
-import { createLoanExpectedEndDate } from '@domain/loan/aggregate/expectedEndDate';
 import { LendItemCommand } from './lendItemCommand';
 
 type Dependencies = {
@@ -72,8 +70,8 @@ export function buildLendItemCommandHandler(dependencies: Dependencies): LendIte
       itemId: payload.itemId,
       sharedBy: payload.sharedBy,
       sharedTo: payload.sharedTo,
-      startDate: createLoanStartDate(dateUtils.now()),
-      expectedEndDate: createLoanExpectedEndDate(dateUtils.inFifteenDays()),
+      startDate: dateUtils.now(),
+      expectedEndDate: dateUtils.inFifteenDays(),
     });
 
     const saveLoanResult = await dependencies.loanRepository.saveLoan({ loan });

@@ -4,7 +4,6 @@ import { LoanId } from '../aggregate/id';
 import { Loan } from '../aggregate';
 import { LoanStartDate } from '../aggregate/startDate';
 import { LoanExpectedEndDate } from '../aggregate/expectedEndDate';
-import { createLoanStatus } from '../aggregate/status';
 
 type Input = {
   id: LoanId;
@@ -23,7 +22,7 @@ export function createAcceptedLoan(input: Input): Loan {
     itemId,
     sharedBy,
     sharedTo,
-    status: createLoanStatus('ACCEPTED'),
+    status: 'ACCEPTED',
     startDate,
     expectedEndDate,
     lastEvent: {

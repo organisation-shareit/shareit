@@ -1,8 +1,6 @@
 import { Item } from '@domain/item/aggregate';
-import { ItemId, createItemId } from '@domain/item/aggregate/id';
-import { createItemName } from '@domain/item/aggregate/name';
+import { ItemId } from '@domain/item/aggregate/id';
 import { ItemRepository } from '@domain/item/repository';
-import { createUserId } from '@domain/user/aggregate/id';
 import { PrismaClient } from '@prisma/client';
 import { TypeGuardError } from '@utils/typeguard-error';
 import { err, ok } from 'neverthrow';
@@ -68,9 +66,9 @@ export function buildPostgresqlItemRepository(dependencies: Dependencies): ItemR
     }
 
     return ok({
-      id: createItemId(item.id),
-      ownerId: createUserId(item.owner_id),
-      name: createItemName(item.name),
+      id: item.id,
+      ownerId: item.owner_id,
+      name: item.name,
     });
   }
 

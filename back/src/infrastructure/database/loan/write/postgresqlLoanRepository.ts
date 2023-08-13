@@ -1,11 +1,6 @@
-import { createItemId } from '@domain/item/aggregate/id';
 import { Loan } from '@domain/loan/aggregate';
-import { createLoanExpectedEndDate } from '@domain/loan/aggregate/expectedEndDate';
-import { LoanId, createLoanId } from '@domain/loan/aggregate/id';
-import { createLoanStartDate } from '@domain/loan/aggregate/startDate';
-import { createLoanStatus } from '@domain/loan/aggregate/status';
+import { LoanId } from '@domain/loan/aggregate/id';
 import { LoanRepository } from '@domain/loan/repository';
-import { createUserId } from '@domain/user/aggregate/id';
 import { PrismaClient } from '@prisma/client';
 import { TypeGuardError } from '@utils/typeguard-error';
 import { err, ok } from 'neverthrow';
@@ -79,13 +74,13 @@ export function buildPostgresqlLoanRepository(dependencies: Dependencies): LoanR
     }
 
     return ok({
-      id: createLoanId(loan.id),
-      itemId: createItemId(loan.item_id),
-      sharedBy: createUserId(loan.shared_by_user_id),
-      sharedTo: createUserId(loan.shared_to_user_id),
-      startDate: createLoanStartDate(loan.start_date),
-      expectedEndDate: createLoanExpectedEndDate(loan.expected_end_date),
-      status: createLoanStatus(loan.status),
+      id: loan.id,
+      itemId: loan.item_id,
+      sharedBy: loan.shared_by_user_id,
+      sharedTo: loan.shared_to_user_id,
+      startDate: loan.start_date,
+      expectedEndDate: loan.expected_end_date,
+      status: loan.status,
     });
   }
 

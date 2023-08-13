@@ -3,7 +3,6 @@ import {
   SAVE_USER_COMMAND_KIND,
   saveUserCommandSchema,
 } from '@application/user/write/saveUser/saveUserCommand';
-import { createUserId } from '@domain/user/aggregate/id';
 import {
   CreateUserMetadata,
   CreateUserRequest,
@@ -36,7 +35,7 @@ export function buildCreateUserRoute(dependencies: Dependencies): CreateUserRout
     logger.info(CREATE_USER_MODULE, 'CREATE_USER_ROUTE', { payload, _metadata });
     const commandId = uuidGenerator.generate(`command-${CREATE_USER_MODULE}`);
 
-    const userId = createUserId(payload.id ?? uuidGenerator.generate(CREATE_USER_MODULE));
+    const userId = payload.id ?? uuidGenerator.generate(CREATE_USER_MODULE);
 
     const commandPayload = {
       id: userId,
