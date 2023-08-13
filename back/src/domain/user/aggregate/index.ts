@@ -3,11 +3,13 @@ import { userEmailSchema } from './email';
 import { userIdSchema } from './id';
 import { userNameSchema } from './name';
 import { userEventsSchema } from '../events';
+import { userAuthProviderIdSchema } from './authProviderId';
 
 export const userSchema = z.object({
   id: userIdSchema,
   name: userNameSchema,
   email: userEmailSchema,
+  authProviderId: userAuthProviderIdSchema,
   lastEvent: userEventsSchema,
 });
 

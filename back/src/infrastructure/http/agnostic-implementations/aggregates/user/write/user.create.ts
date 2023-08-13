@@ -41,6 +41,7 @@ export function buildCreateUserRoute(dependencies: Dependencies): CreateUserRout
       id: userId,
       name: payload.name,
       email: payload.email,
+      authProviderId: payload.authProviderId,
     };
 
     const commandKind = SAVE_USER_COMMAND_KIND;

@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { userAuthProviderIdSchema } from '../../../../../../domain/user/aggregate/authProviderId';
 import { userIdSchema } from '../../../../../../domain/user/aggregate/id';
 import { userEmailSchema } from '../../../../../../domain/user/aggregate/email';
 import { userNameSchema } from '../../../../../../domain/user/aggregate/name';
@@ -17,6 +18,7 @@ export const createUserRequestSchema = z.object({
   id: userIdSchema.optional(),
   name: userNameSchema,
   email: userEmailSchema,
+  authProviderId: userAuthProviderIdSchema,
 });
 
 export type CreateUserRequest = z.infer<typeof createUserRequestSchema>;

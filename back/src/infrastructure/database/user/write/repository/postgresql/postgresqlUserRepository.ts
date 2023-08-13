@@ -23,6 +23,7 @@ export function buildPostgresqlUserRepository(dependencies: Dependencies): UserR
               id: input.user.id,
               email: input.user.email,
               name: input.user.name,
+              auth_provider_id: input.user.authProviderId,
             },
           });
           return ok(undefined);
@@ -69,6 +70,7 @@ export function buildPostgresqlUserRepository(dependencies: Dependencies): UserR
       id: user.id,
       email: user.email,
       name: user.name,
+      authProviderId: user.auth_provider_id,
     });
   }
 

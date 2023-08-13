@@ -69,6 +69,7 @@ export function buildSaveUserCommandHandler(dependencies: Dependencies): SaveUse
         name: payload.name,
         email: payload.email,
         id: payload.id,
+        authProviderId: payload.authProviderId,
       },
     });
 
