@@ -15,6 +15,7 @@ model user {
   name              String
   email             String
   item              item[]
+  auth_provider_id  String   @unique
   loans_as_owner    loan[]   @relation(name: "OwnerOfLoan")
   loans_as_borrower loan[]   @relation(name: "BorrowerOfLoan")
   created_at        DateTime @default(now())
