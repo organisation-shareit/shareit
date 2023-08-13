@@ -156,6 +156,30 @@ export function buildTsRestApp(dependencies: Dependencies) {
           throw new TypeGuardError(result, 'Invalid status');
       }
     },
+    lendItem: async (params) => {
+      const result = await dependencies.agnosticWrites.lendItem(params.body, {});
+
+      switch (result.status) {
+        case 400:
+          return {
+            status: 400,
+            body: result.body,
+          };
+        case 500: {
+          return {
+            status: 500,
+            body: result.body,
+          };
+        }
+        case 201:
+          return {
+            status: 201,
+            body: result.body,
+          };
+        default:
+          throw new TypeGuardError(result, 'Invalid status');
+      }
+    },
   });
 
   const openApiTsRest = generateOpenApi(

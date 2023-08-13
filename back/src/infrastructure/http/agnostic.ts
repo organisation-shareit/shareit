@@ -16,6 +16,8 @@ import { CreateItemRoute } from './contracts/aggregates/item/write/item.create';
 import { UpdateItemRoute } from './contracts/aggregates/item/write/item.update';
 import { buildCreateItemRoute } from './agnostic-implementations/aggregates/item/write/item.create';
 import { buildUpdateItemRoute } from './agnostic-implementations/aggregates/item/write/item.update';
+import { LendItemRoute } from './contracts/aggregates/item/write/item.lend';
+import { buildLendItemRoute } from './agnostic-implementations/aggregates/item/write/item.lend';
 
 export type AgnosticReads = {
   healthcheck: HealthcheckHandler;
@@ -43,6 +45,7 @@ export type AgnosticWrites = {
   updateUser: UpdateUserRoute;
   createItem: CreateItemRoute;
   updateItem: UpdateItemRoute;
+  lendItem: LendItemRoute;
 };
 
 type WriteDependencies = {
@@ -58,5 +61,6 @@ export function buildAgnosticWrites(dependencies: WriteDependencies): AgnosticWr
     updateUser: buildUpdateUserRoute(dependencies),
     createItem: buildCreateItemRoute(dependencies),
     updateItem: buildUpdateItemRoute(dependencies),
+    lendItem: buildLendItemRoute(dependencies),
   };
 }
