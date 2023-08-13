@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { userIdSchema } from '../../../../../../domain/user/aggregate/id';
 import { userEmailSchema } from '../../../../../../domain/user/aggregate/email';
 import { userNameSchema } from '../../../../../../domain/user/aggregate/name';
 import {
@@ -13,6 +14,7 @@ export const CREATE_USER_METHOD = 'POST';
 export const CREATE_USER_ROUTE = '/user.create';
 
 export const createUserRequestSchema = z.object({
+  id: userIdSchema.optional(),
   name: userNameSchema,
   email: userEmailSchema,
 });
