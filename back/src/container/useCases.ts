@@ -4,6 +4,7 @@ import { buildListAllUsersQueryHandler } from '@application/user/read/listAllUse
 import { Logger } from '@utils/logger';
 import { buildSaveUserCommandHandler } from '@application/user/write/saveUser/saveUserCommandHandler';
 import { buildSaveItemCommandHandler } from '@application/item/write/saveItem/saveItemCommandHandler';
+import { buildLendItemCommandHandler } from '@application/item/write/lendItem/lendItemCommandHandler';
 import { Adapters } from './types';
 
 export function buildUseCases(
@@ -28,10 +29,19 @@ export function buildUseCases(
     logger,
   });
 
+  const lendItemCommandHandler = buildLendItemCommandHandler({
+    itemRepository: adapters.database.repository.itemRepository,
+    userRepository: adapters.database.repository.userRepository,
+    loanRepository: adapters.database.repository.loanRepository,
+    dateUtils: adapters.utils.dateUtils,
+    logger,
+  });
+
   const commandBus = buildCommandBus({
     logger,
     saveUser: saveUserCommandHandler,
     saveItem: saveItemCommandHandler,
+    lendItem: lendItemCommandHandler,
   });
 
   const queryBus = buildQueryBus({

@@ -24,6 +24,7 @@ model user {
 model item {
   id         String   @id @db.Uuid
   name       String
+  loans      loan[]   @relation(name: "ItemOfLoan")
   owner      user     @relation(fields: [owner_id], references: [id])
   owner_id   String   @db.Uuid
   created_at DateTime @default(now())
@@ -31,14 +32,23 @@ model item {
 }
 
 model loan {
-  id                String   @id @db.Uuid
-  shared_by         user     @relation(name: "OwnerOfLoan", fields: [shared_by_user_id], references: [id])
-  shared_by_user_id String   @db.Uuid
-  shared_to         user     @relation(name: "BorrowerOfLoan", fields: [shared_to_user_id], references: [id])
-  shared_to_user_id String   @db.Uuid
+  id                String      @id @db.Uuid
+  item              item        @relation(name: "ItemOfLoan", fields: [item_id], references: [id])
+  item_id           String      @db.Uuid
+  shared_by         user        @relation(name: "OwnerOfLoan", fields: [shared_by_user_id], references: [id])
+  shared_by_user_id String      @db.Uuid
+  shared_to         user        @relation(name: "BorrowerOfLoan", fields: [shared_to_user_id], references: [id])
+  shared_to_user_id String      @db.Uuid
+  status            loan_status @default(PENDING)
   start_date        DateTime
   expected_end_date DateTime
-  is_returned       Boolean  @default(false)
-  created_at        DateTime @default(now())
-  updated_at        DateTime @updatedAt
+  created_at        DateTime    @default(now())
+  updated_at        DateTime    @updatedAt
+}
+
+enum loan_status {
+  PENDING
+  ACCEPTED
+  REJECTED
+  RETURNED
 }

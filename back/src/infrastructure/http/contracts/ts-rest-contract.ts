@@ -33,6 +33,12 @@ import {
   updateItemRequestSchema,
   updateItemResponseSchema,
 } from './aggregates/item/write/item.update';
+import {
+  LEND_ITEM_METHOD,
+  LEND_ITEM_ROUTE,
+  lendItemRequestSchema,
+  lendItemResponseSchema,
+} from './aggregates/item/write/item.lend';
 
 const tsRest = initContract();
 
@@ -76,5 +82,12 @@ export const tsRestContract = tsRest.router({
     body: updateItemRequestSchema,
     responses: updateItemResponseSchema,
     summary: 'Updating an existing item',
+  },
+  lendItem: {
+    method: LEND_ITEM_METHOD,
+    path: LEND_ITEM_ROUTE,
+    body: lendItemRequestSchema,
+    responses: lendItemResponseSchema,
+    summary: 'Lending an item',
   },
 });
