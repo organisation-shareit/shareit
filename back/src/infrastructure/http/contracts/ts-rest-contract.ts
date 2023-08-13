@@ -45,9 +45,9 @@ import { Loan, loanSchema } from '../../../domain/loan/aggregate';
 
 const tsRest = initContract();
 
-export { Item, itemSchema };
-export { User, userSchema };
-export { Loan, loanSchema };
+export { type Item, itemSchema };
+export { type User, userSchema };
+export { type Loan, loanSchema };
 
 export const tsRestContract = tsRest.router({
   healthcheck: {
