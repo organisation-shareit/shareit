@@ -8,11 +8,11 @@ type BottomNavigationBarProps = {
 
 export const BottomNavigationBar = ({ linkItems }: BottomNavigationBarProps) => {
   return (
-    <Flex align="stretch" direction="row" flex="1">
+    <Flex align="stretch" direction="row" flex="1" height={'100%'}>
       {linkItems.map((linkItem) => {
         return (
           <Box flex="1" textAlign="center" display="flex" alignItems="center">
-            <BottomNavItem icon={linkItem.icon} linkPath={linkItem.linkPath} />
+            <BottomNavItem icon={linkItem.icon} linkPath={linkItem.linkPath} name={linkItem.name} />
           </Box>
         );
       })}
