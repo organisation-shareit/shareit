@@ -54,9 +54,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       (userCredential) => {
         const userSign = userCredential.user;
         updateProfile(userSign, { displayName: userData.firstname });
-        return initUserAfterSignUp(userSign.uid, userData.email, userData.firstname).then(
-          () => userCredential,
-        );
+        return initUserAfterSignUp(
+          userSign.uid,
+          userData.email,
+          `${userData.firstname} ${userData.lastname}`,
+        ).then(() => userCredential);
       },
     );
   }
