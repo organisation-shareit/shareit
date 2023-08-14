@@ -9,7 +9,7 @@ export const client = initQueryClient(tsRestContract, {
 
 export const initUserAfterSignUp = async (userId: string, email: string | null, displayName: string | null) => {
   // @ts-ignore
-  client.createUser.mutation({ body: { id: userId, name: displayName, email: email } }).then((res) => {
+  client.createUser.mutation({ body: { name: displayName, email: email, authProviderId: userId } }).then((res) => {
     console.log(res);
   }
   ).catch((err) => {
